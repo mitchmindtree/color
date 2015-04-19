@@ -25,7 +25,7 @@ mod utils;
 
 
 /// Color supporting RGB and HSL variants.
-#[derive(Copy, Clone, RustcEncodable, RustcDecodable)]
+#[derive(Copy, Clone, Debug, RustcEncodable, RustcDecodable)]
 pub enum Color {
     /// Red, Green, Blue, Alpha - All values' scales represented between 0.0 and 1.0.
     Rgba(f32, f32, f32, f32),
@@ -438,14 +438,6 @@ pub fn charcoal()       -> Color { rgb_bytes(85  , 87  , 83 ) }
 /// Charcoal - Dark - #2E3436
 pub fn dark_charcoal()  -> Color { rgb_bytes(46  , 52  , 54 ) }
 
-
-
-impl ::std::fmt::Debug for Color {
-    fn fmt(&self, fmt: &mut ::std::fmt::Formatter) -> Result<(), ::std::fmt::Error> {
-        let hex = self.clone().to_hex();
-        fmt.pad(&hex)
-    }
-}
 
 
 /// Types that can be colored.
